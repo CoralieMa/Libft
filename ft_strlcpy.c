@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 11:41:21 by cmartino          #+#    #+#             */
-/*   Updated: 2022/10/03 11:41:26 by cmartino         ###   ########.fr       */
+/*   Created: 2022/10/03 16:23:32 by cmartino          #+#    #+#             */
+/*   Updated: 2022/10/03 16:23:37 by cmartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+size_t	ft_strlcpy(char* dst, const char* src, size_t dstsize)
 {
-	if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
+	size_t	len;
+
+	len = 0;
+	while (src[len])
+	{
+		dst[len] = src[len];
+		len++;
+	}
+	dst[len] = '\0';
 }
