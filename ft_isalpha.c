@@ -1,19 +1,18 @@
-#include <stdio.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 11:41:21 by cmartino          #+#    #+#             */
+/*   Updated: 2022/10/03 11:41:26 by cmartino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int     ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-    if (c > 64 && c < 91 || c > 96 && c < 123)
-        return 1024;
-    return 0;
-}
-
-int main(void)
-{
-    char x = 'A';
-    while (x <= 'z')
-    {
-        printf("%d -- %d \n", isalpha(x), ft_isalpha(x));
-        x++;
-    }
+	if (c > 64 && c < 91 || c > 96 && c < 123)
+		return (1024);
+	return (0);
 }
