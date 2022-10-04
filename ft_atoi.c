@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 09:18:08 by cmartino          #+#    #+#             */
-/*   Updated: 2022/10/04 09:18:10 by cmartino         ###   ########.fr       */
+/*   Created: 2022/10/04 10:42:40 by cmartino          #+#    #+#             */
+/*   Updated: 2022/10/04 10:42:41 by cmartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+static int	ft_sign(char c)
 {
-	int	i;
-	
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return (&s[i]);
-		i++;
-	}
-	if (c == '\0')
-		return (&s[i]);
-	return (NULL);
+	if (c == '-')
+		return (-1);
+	return (1);
 }
 
-
-#include <string.h>
-#include <stdio.h>
-int main(void)
+int	ft_atoi(const char *str)
 {
-	printf("|%s| -- |%s|\n", ft_strchr("hrdgo", 'd'), strchr("hrdgo", 'd'));
+	int		sign;
+	int		nb;
+	int		i;
+
+	i = 0;
+	if (str[0] == '-' || str[0] == '+')
+	{
+		sign = ft_sign(str[0]);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	return (nb * sign);
 }
