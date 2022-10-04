@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 13:32:33 by cmartino          #+#    #+#             */
-/*   Updated: 2022/10/03 13:32:35 by cmartino         ###   ########.fr       */
+/*   Created: 2022/10/04 09:04:52 by cmartino          #+#    #+#             */
+/*   Updated: 2022/10/04 09:04:57 by cmartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memset(void *b, int c, size_t len)
+size_t	ft_strlcat(char *dst, const char src, size_t dstsize)
 {
-
+	//
 }

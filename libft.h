@@ -20,5 +20,11 @@ int	ft_isalnum(int c);
 int	ft_isascii(int c);
 int	ft_isprint(int c);
 size_t	ft_strlen(const char *s);
+//...
+size_t	ft_strlcpy(char* dst, const char* src, size_t dstsize);
+//..
+int	ft_toupper(int c);
+int	ft_tolower(int c);
+//..
 
 #endif
