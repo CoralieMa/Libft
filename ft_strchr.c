@@ -15,7 +15,7 @@
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i])
 	{
@@ -28,10 +28,9 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-
-#include <string.h>
+/*#include <string.h>
 #include <stdio.h>
 int main(void)
 {
 	printf("|%s| -- |%s|\n", ft_strchr("hrdgo", 'd'), strchr("hrdgo", 'd'));
-}
+}*/
