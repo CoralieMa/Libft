@@ -16,13 +16,14 @@ SRCS	= ft_isalpha.c \
 			ft_isascii.c \
 			ft_isprint.c \
 			ft_strlen.c \
-			ft_strlcpy.c \
+			ft_memset.c \
+			ft_bzero.c \
+			ft_memcpy.c \
 			ft_toupper.c \
-			ft_tolower.c
+			ft_tolower.c \
+			ft_atoi.c
 
 OBJS	= ${SRCS:.c=.o}
-
-//HEADER	= includes/ //
 
 NAME	= libft.a
 
@@ -33,7 +34,7 @@ CFLAGS	= -Wall -Wextra -Werror
 RM	= rm -f
 
 .c.o:
-	${CC} ${CFLAGS} -I ${HEADER} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}

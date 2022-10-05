@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+//#include <stdio.h>
+
 static int	ft_sign(char c)
 {
 	if (c == '-')
@@ -26,6 +28,8 @@ int	ft_atoi(const char *str)
 	int		i;
 
 	i = 0;
+	sign = 1;
+	nb = 0;
 	if (str[0] == '-' || str[0] == '+')
 	{
 		sign = ft_sign(str[0]);
@@ -38,3 +42,16 @@ int	ft_atoi(const char *str)
 	}
 	return (nb * sign);
 }
+
+/*#include <stdlib.h>
+
+
+int	main(int argc, char **argv)
+{
+	int i = 1;
+	while (i < argc)
+	{
+		printf("atoi --> %d \t\t~ %d <-- ft_atoi\n", atoi(argv[i]), ft_atoi(argv[i]));
+		i++;
+	}
+}*/
