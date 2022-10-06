@@ -21,9 +21,9 @@ static int	ft_sign(char c)
 
 int	ft_atoi(const char *str)
 {
-	int		sign;
-	int		nb;
-	int		i;
+	int					sign;
+	unsigned int		nb;
+	int					i;
 
 	i = 0;
 	sign = 1;
