@@ -12,6 +12,18 @@
 
 #include "libft.h"
 
+/*#include <stdio.h>
+#include <string.h>
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}*/
+
 static int	ft_verifstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
@@ -34,6 +46,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	char	*temp;
 
+	if ((haystack == NULL || needle == NULL) && len == 0)
+		return (NULL);
 	temp = (char *)haystack;
 	len_haystack = ft_strlen(haystack);
 	if (ft_strlen(needle) == 0)
@@ -52,3 +66,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+
+/*int main(void)
+{
+	char *s  = "lorem ipsum dolor sit amet";
+	printf("%s -- %s", ft_strnstr(s, NULL, 0), ft_strnstr(s, s, 59));
+}*/
