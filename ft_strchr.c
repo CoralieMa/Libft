@@ -14,23 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
+	temp = (char *)s;
 	i = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
-			return (&s[i]);
+			return (&temp[i]);
 		i++;
 	}
 	if (c == '\0')
-		return (&s[i]);
+		return (&temp[i]);
 	return (NULL);
 }
-
-/*#include <string.h>
-#include <stdio.h>
-int main(void)
-{
-	printf("|%s| -- |%s|\n", ft_strchr("hrdgo", 'd'), strchr("hrdgo", 'd'));
-}*/
