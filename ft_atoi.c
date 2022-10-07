@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+static int	ft_long(int sign)
+{
+	if (sign == 1)
+		return (-1);
+	return (0);
+}
+
 static int	ft_sign(char c)
 {
 	if (c == '-')
@@ -22,7 +29,7 @@ static int	ft_sign(char c)
 int	ft_atoi(const char *str)
 {
 	int					sign;
-	unsigned int		nb;
+	unsigned long		nb;
 	int					i;
 
 	i = 0;
@@ -40,5 +47,7 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - 48);
 		i++;
 	}
+	if (nb > 9223372036854775807)
+		nb = ft_long(sign);
 	return (nb * sign);
 }
