@@ -22,19 +22,21 @@ size_t	ft_strlen(const char *s)
 	while (s[len])
 		len++;
 	return (len);
-}*/
+}
 
-static int	ft_verifstr(const char *haystack, const char *needle, size_t len)
+int	ft_strncmp1(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	len_needle;
 
 	i = 0;
-	len_needle = ft_strlen(needle);
-	while (i < len && i < len_needle)
+	if ((!s1[i] || !s2[i]) && n != 0)
 	{
-		if (haystack[i] != needle[i] || i == len - 1)
-			return (1);
+		return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+	}
+	while ((s1[i]) && i < n && i < ft_strlen(s2))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 		i++;
 	}
 	return (0);
@@ -59,7 +61,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		if (haystack[i] == needle[0])
 		{
-			if (ft_verifstr(&haystack[i], needle, len - i) == 0)
+			if (ft_strncmp1(&haystack[i], needle, len - i) == 0)
 				return (&temp[i]);
 		}
 		i++;
@@ -67,8 +69,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-/*int main(void)
+int main(void)
 {
-	char *s  = "lorem ipsum dolor sit amet";
-	printf("%s -- %s", ft_strnstr(s, NULL, 0), ft_strnstr(s, s, 59));
+	//char *s  = "lorem ipsum dolor sit amet";
+	printf("%s -- %s", strnstr("lorem ipsum dolor sit amet", "dolor", 15), ft_strnstr("lorem ipsum dolor sit amet", "dolor", 14));
 }*/
+
