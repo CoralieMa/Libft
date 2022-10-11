@@ -89,9 +89,15 @@ char	**ft_split(char const *s, char c)
 /*#include <stdio.h>
 int main(void)
 {
-	char **tab = ft_split("-Bonjour-Lola--et-Toto-", '6');
+	char **tab = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
 	char **tab1 = ft_split("", '-');
 
-	printf("[%s][%s][%s][%s][%s]\n", tab[0], tab[1], tab[2], tab[3], tab[4]);
+	int i = 0;
+	while(tab[i] != NULL)
+	{
+		printf("[%s]", tab[i]);
+		i++;
+	}
+	printf("\n");
 	printf("[%s]", tab1[0]);
 }*/
