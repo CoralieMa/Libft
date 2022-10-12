@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "libft.h"
+#include "libft.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*elem;
-
-	elem -> content = new;
-	elem -> next = lst;
-}*/
+	if (new)
+	{
+		new -> next = *lst;
+		*lst = new;
+	}
+}
