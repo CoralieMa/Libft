@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+/*size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
@@ -20,7 +20,7 @@ size_t	ft_strlen(const char *s)
 	while (s[len])
 		len++;
 	return (len);
-}
+}*/
 
 static int	ft_is_in_set(char c, char const *set)
 {
@@ -39,39 +39,37 @@ static int	ft_is_in_set(char c, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
+	size_t	j;
 	size_t	cpt;
 	char	*s;
 
 	i = 0;
-	cpt = 0;
+	j = ft_strlen(s1) - 1;
 	if (!s1)
 		return (NULL);
-	while (s1[i])
-	{
-		if (ft_is_in_set(s1[i], set) == 0)
-			cpt++;
+	while (ft_is_in_set(s1[i], set) == 0)
 		i++;
-	}
-	s = (char *) malloc ((ft_strlen(s1) - cpt) * sizeof(char) + 1);
+	if (i - 1 == j)
+		return ((char *) s1);
+	while (ft_is_in_set(s1[j], set) == 0)
+		j--;
+	j = j - i;
+	s = (char *) malloc((j) * sizeof(char) + 2);
 	if (!s)
 		return (NULL);
-	i = 0;
+	s[j + 1] = '\0';
 	cpt = 0;
-	while (s1[i])
+	while (cpt <= j)
 	{
-		if (ft_is_in_set(s1[i], set) != 0)
-		{
-			s[cpt] = s1[i];
-			cpt++;
-		}
+		s[cpt] = s1[i];
+		cpt++;
 		i++;
 	}
-	s[cpt] = '\0';
 	return (s);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {
-	printf("%s", ft_strtrim("lorem ipsum dolor sit amet", "te"));
-}
+	printf("%s", ft_strtrim("          ", "  "));
+}*/
