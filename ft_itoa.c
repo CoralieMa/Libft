@@ -57,7 +57,7 @@ static char	*ft_expt(int n)
 	}
 	tab = (char *) malloc(12 * sizeof(char));
 	if (!tab)
-			return (NULL);
+		return (NULL);
 	tab[0] = '-';
 	tab[1] = '2';
 	n = 147483648;
@@ -108,8 +108,8 @@ char	*ft_itoa(int n)
 	return (s);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
 	printf("%s", ft_itoa(-2147483648LL));
-}*/
+}

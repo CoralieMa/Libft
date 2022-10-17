@@ -15,11 +15,11 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	temp;
-	char			*ptr;
+	unsigned char	*ptr;
 	size_t			i;
 
 	temp = (unsigned char)c;
-	ptr = (char *)s;
+	ptr = (unsigned char *)s;
 	i = 0;
 	while (i < n)
 	{
@@ -31,16 +31,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-/* gerer strchr
-
-
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
-
-	printf("%s -- %s", (char *)memchr(tab, -1, 7), (char *)ft_memchr(tab, -1, 7));
-}*/
