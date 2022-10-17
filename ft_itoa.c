@@ -25,36 +25,24 @@ static int	ft_ten_power(int pow)
 	return (nb);
 }
 
-static int	ft_ten(int nb)
+static char	*ft_zero(void)
 {
-	int	cnt;
+	char	*tab;
 
-	if (nb < 0)
-		nb = -nb;
-	cnt = 0;
-	while (nb >= 1)
-	{
-		nb = nb / 10;
-		cnt++;
-	}
-	return (cnt);
+	tab = (char *) malloc(2 * sizeof(char));
+	if (!tab)
+		return (NULL);
+	tab[0] = '0';
+	tab[1] = '\0';
+	return (tab);
 }
 
-static char	*ft_expt(int n)
+static char	*ft_int_min(int n)
 {
 	char	*tab;
 	int		ten;
 	int		i;
 
-	if (n == 0)
-	{
-		tab = (char *) malloc(2 * sizeof(char));
-		if (!tab)
-			return (NULL);
-		tab[0] = '0';
-		tab[1] = '\0';
-		return (tab);
-	}
 	tab = (char *) malloc(12 * sizeof(char));
 	if (!tab)
 		return (NULL);
@@ -70,46 +58,58 @@ static char	*ft_expt(int n)
 		n -= (tab[i] - '0') * ft_ten_power(ten);
 		i++;
 	}
+	tab[i] = '\0';
+	return (tab);
+}
+
+static char	*ft_fill_tab(char *tab, int ten, int nbr)
+{
+	int	i;
+	int	temp;
+
+	i = 0;
+	tab[ten] = '\0';
+	temp = ten;
+	while (i < temp)
+	{
+		if (nbr < 0)
+		{
+			nbr = -nbr;
+			tab[i] = '-';
+			ten--;
+			i++;
+		}
+		ten--;
+		tab[i] = (nbr / ft_ten_power(ten)) + '0';
+		nbr -= (tab[i] - '0') * ft_ten_power(ten);
+		i++;
+	}
 	return (tab);
 }
 
 char	*ft_itoa(int n)
 {
 	int		ten;
-	int		i;
 	int		temp;
 	char	*s;
 
-	if (n == 0 || n == -2147483648)
-		return (ft_expt(n));
-	ten = ft_ten(n);
+	if (n == 0)
+		return (ft_zero());
+	if (n == -2147483648)
+		return (ft_int_min(n));
+	temp = n;
+	if (temp < 0)
+		temp = -temp;
+	ten = 0;
+	while (temp >= 1)
+	{
+		temp = temp / 10;
+		ten++;
+	}
 	if (n < 0)
 		ten++;
 	s = (char *) malloc(ten * sizeof(char) + 1);
 	if (!s)
 		return (NULL);
-	s[ten] = '\0';
-	i = 0;
-	temp = ten;
-	while (i < temp)
-	{
-		if (n < 0)
-		{
-			n = -n;
-			s[i] = '-';
-			ten--;
-			i++;
-		}
-		ten--;
-		s[i] = (n / ft_ten_power(ten)) + '0';
-		n -= (s[i] - '0') * ft_ten_power(ten);
-		i++;
-	}
-	return (s);
-}
-
-#include <stdio.h>
-int main(void)
-{
-	printf("%s", ft_itoa(-2147483648LL));
+	return (ft_fill_tab(s, ten, n));
 }
