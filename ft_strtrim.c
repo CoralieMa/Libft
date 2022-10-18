@@ -57,9 +57,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*s;
 
 	i = 0;
-	j = ft_strlen(s1) - 1;
 	if (!s1)
 		return (NULL);
+	j = ft_strlen(s1) - 1;
 	while (ft_is_in_set(s1[i], set) == 0)
 		i++;
 	if (i - 1 == j)
