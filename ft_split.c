@@ -11,26 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-/*#include <stdio.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	char	*ptr1;
-	char	*ptr2;
-	size_t	i;
-
-	if (!dst && !src)
-		return (NULL);
-	i = 0;
-	ptr1 = (char *)dst;
-	ptr2 = (char *)src;
-	while (i < n)
-	{
-		ptr1[i] = ptr2[i];
-		i++;
-	}
-	return (dst);
-}*/
 
 static int	ft_len_tab(char const *s, char c)
 {
@@ -91,19 +71,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_fill_tab(s, c, tab));
 }
-
-/*#include <stdio.h>
-int main(void)
-{
-	char **tab = ft_split("lorem ipsum dolor sit amet", ' ');
-	//char **tab1 = ft_split("", '-');
-
-	int i = 0;
-	while(tab[i] != NULL)
-	{
-		printf("[%s]", tab[i]);
-		i++;
-	}
-	printf("\n");
-	printf("[%s]", tab1[0]);
-}*/
