@@ -12,22 +12,6 @@
 
 #include "libft.h"
 
-/*size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-
-void ft_test(unsigned int i, char* s)
-{
-	s[i] = 'A';
-}*/
-
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	len;
@@ -37,16 +21,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i = 0;
 	while (i < len)
 	{
-		f(i, s);
+		f(i, &s[i]);
 		i++;
 	}
 }
-
-/*#include <stdio.h>
-int main (void)
-{
-	char *str =  "LoReM iPsUm";
-	printf("%s\n", str);
-	ft_striteri(str, ft_test);
-	printf("%s\n", str);
-}*/

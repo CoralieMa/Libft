@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+/*#include <stdio.h>
 
-/*void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*ptr1;
 	char	*ptr2;
@@ -29,8 +30,7 @@
 		i++;
 	}
 	return (dst);
-}
-*/
+}*/
 
 static int	ft_len_tab(char const *s, char c)
 {
@@ -48,21 +48,15 @@ static int	ft_len_tab(char const *s, char c)
 		}
 		i++;
 	}
-	return (cpt);
+	return (cpt + 1);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_fill_tab(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
 	size_t	cnt;
-	char	**tab;
 
-	if (!s)
-		return (NULL);
-	tab = (char **) malloc(ft_len_tab(s, c) * sizeof(char **) + 1);
-	if (!tab)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -86,11 +80,23 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	tab = (char **) malloc(ft_len_tab(s, c) * sizeof(*tab));
+	if (!tab)
+		return (NULL);
+	return (ft_fill_tab(s, c, tab));
+}
+
 /*#include <stdio.h>
 int main(void)
 {
-	char **tab = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
-	char **tab1 = ft_split("", '-');
+	char **tab = ft_split("lorem ipsum dolor sit amet", ' ');
+	//char **tab1 = ft_split("", '-');
 
 	int i = 0;
 	while(tab[i] != NULL)

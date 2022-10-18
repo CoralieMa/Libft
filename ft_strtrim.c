@@ -12,16 +12,6 @@
 
 #include "libft.h"
 
-/*size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}*/
-
 static int	ft_is_in_set(char c, char const *set)
 {
 	size_t	i;
@@ -36,27 +26,19 @@ static int	ft_is_in_set(char c, char const *set)
 	return (1);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static char	*ft_empty(void)
 {
-	size_t	i;
-	size_t	j;
-	size_t	cpt;
 	char	*s;
 
-	i = 0;
-	j = ft_strlen(s1) - 1;
-	if (!s1)
-		return (NULL);
-	while (ft_is_in_set(s1[i], set) == 0)
-		i++;
-	if (i - 1 == j)
-		return ((char *) s1);
-	while (ft_is_in_set(s1[j], set) == 0)
-		j--;
-	j = j - i;
-	s = (char *) malloc((j) * sizeof(char) + 2);
-	if (!s)
-		return (NULL);
+	s = (char *) malloc(sizeof(s));
+	s[0] = '\0';
+	return (s);
+}
+
+static char	*ft_fill(char *s, char const *s1, size_t i, size_t j)
+{
+	size_t	cpt;
+
 	s[j + 1] = '\0';
 	cpt = 0;
 	while (cpt <= j)
@@ -68,8 +50,26 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (s);
 }
 
-/*#include <stdio.h>
-int main(void)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	printf("%s", ft_strtrim("          ", "  "));
-}*/
+	size_t	i;
+	size_t	j;
+	char	*s;
+
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	if (!s1)
+		return (NULL);
+	while (ft_is_in_set(s1[i], set) == 0)
+		i++;
+	if (i - 1 == j)
+		return (ft_empty());
+	while (ft_is_in_set(s1[j], set) == 0)
+		j--;
+	j = j - i;
+	s = (char *) malloc((j) * sizeof(char) + 2);
+	if (!s)
+		return (NULL);
+	ft_fill(s, s1, i, j);
+	return (s);
+}

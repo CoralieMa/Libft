@@ -16,7 +16,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const char	*ptr1;
 	const char	*ptr2;
-	size_t				i;
+	size_t		i;
 
 	if (n == 0)
 		return (0);
