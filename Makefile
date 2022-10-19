@@ -76,7 +76,7 @@ ${NAME}:	${OBJS}
 all :	${NAME}
 
 bonus: ${OBJS} ${OBJS_BONUS}
-		ar -rcs ${NAME} ${OBJS} ${OBJS_BONUS}
+		ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
 
 clean:
 	${RM} ${OBJS} $(OBJS_BONUS)

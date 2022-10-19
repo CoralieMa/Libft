@@ -12,27 +12,26 @@
 
 #include "libft.h"
 
+static char	*ft_one_string(char const *s)
+{
+	char	*str;
+	size_t	len;
+
+	len = ft_strlen(s);
+	str = (char *) malloc((len) * sizeof(char) + 1);
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s, len);
+	return (str);
+}
+
 static char	*ft_n_str(char const *s1, char const *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*s;
-
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1)
-	{
-		s2_len = ft_strlen(s2);
-		s = (char *) malloc((s2_len) * sizeof(char) + 1);
-		ft_strlcpy(s, s2, s2_len);
-	}
-	if (!s2)
-	{
-		s1_len = ft_strlen(s1);
-		s = (char *) malloc((s1_len) * sizeof(char) + 1);
-		ft_strlcpy(s, s1, s1_len);
-	}
-	return (s);
+	if (s2)
+		return (ft_one_string(s2));
+	if (s1)
+		return (ft_one_string(s1));
+	return (NULL);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

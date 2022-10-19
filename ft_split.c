@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmartino <cmartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:32:30 by cmartino          #+#    #+#             */
-/*   Updated: 2022/10/10 15:32:32 by cmartino         ###   ########.fr       */
+/*   Updated: 2022/10/19 17:06:13 by cmartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,21 @@ static int	ft_len_tab(char const *s, char c)
 
 	i = 0;
 	cpt = 1;
+	if (s[0] == '\0')
+		return (1);
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
-			if (i != 0 && s[i + 1] && s[i +1] != c)
+			if (i == 0)
+			{
+				while (s[i] == c)
+				{
+					if (!s[++i])
+						return (1);
+				}
+			}
+			else if (s[i + 1] && s[i +1] != c)
 				cpt++;
 		}
 		i++;
@@ -31,11 +41,30 @@ static int	ft_len_tab(char const *s, char c)
 	return (cpt + 1);
 }
 
-static char	**ft_fill_tab(char const *s, char c, char **tab)
+static char	**ft_free_all(char **tab, size_t j)
+{
+	size_t	i;
+
+	i = 0;
+	while (i <= j)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
+}
+
+static char	**ft_last_tab(char **tab, size_t j)
+{
+	tab[j] = NULL;
+	return (tab);
+}
+
+static char	**ft_fill_tab(char const *s, char c, char **tab, size_t	cnt)
 {
 	size_t	i;
 	size_t	j;
-	size_t	cnt;
 
 	i = 0;
 	j = 0;
@@ -50,24 +79,27 @@ static char	**ft_fill_tab(char const *s, char c, char **tab)
 				i++;
 			}
 			tab[j] = (char *) malloc(cnt * sizeof(char) + 2);
+			if (!tab[j])
+				return (ft_free_all(tab, j));
 			tab[j][cnt + 1] = '\0';
 			ft_memcpy(tab[j], &s[i - cnt], cnt + 1);
 			j++;
 		}
 		i++;
 	}
-	tab[j] = NULL;
-	return (tab);
+	return (ft_last_tab(tab, j));
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
+	size_t	cnt;
 
+	cnt = 0;
 	if (!s)
 		return (NULL);
-	tab = (char **) malloc(ft_len_tab(s, c) * sizeof(*tab));
+	tab = (char **) malloc(ft_len_tab(s, c) * sizeof(char *));
 	if (!tab)
 		return (NULL);
-	return (ft_fill_tab(s, c, tab));
+	return (ft_fill_tab(s, c, tab, cnt));
 }
