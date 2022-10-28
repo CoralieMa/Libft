@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmartino <cmartino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:59:45 by cmartino          #+#    #+#             */
-/*   Updated: 2022/10/10 11:59:48 by cmartino         ###   ########.fr       */
+/*   Updated: 2022/10/28 09:35:56 by cmartino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_one_string(char const *s)
 	str = (char *) malloc((len) * sizeof(char) + 1);
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, s, len);
+	ft_strlcpy(str, s, len + 1);
 	return (str);
 }
 
